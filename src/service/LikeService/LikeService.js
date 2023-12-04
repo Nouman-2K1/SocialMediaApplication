@@ -16,7 +16,7 @@ const likeService = {
   },
 
   unlikePost: async (userId, postId) => {
-    const post = await postModel.findByPk(userId);
+    const post = await postModel.findByPk(postId);
     if (!post) {
       return { message: "post not found" };
     }
