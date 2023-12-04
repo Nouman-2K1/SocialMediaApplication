@@ -1,14 +1,13 @@
 import nodemailer from "nodemailer";
 
-var transporter = nodemailer.createTransport({
+var transport = nodemailer.createTransport({
   host: "sandbox.smtp.mailtrap.io",
   port: 2525,
   auth: {
-    user: "", // place your user
-    pass: "", // place user's password
+    user: "a362c3ce454040",
+    pass: "203bdcab52dcd5",
   },
 });
-
 const LoginEmail = async (params) => {
   const { from, to, subject, text } = params;
   const info = await transporter.sendMail({
