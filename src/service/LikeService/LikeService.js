@@ -4,7 +4,7 @@ import postModel from "../../model/PostModel/PostModel.js";
 
 const likeService = {
   likePost: async (userId, postId) => {
-    const post = await postModel.findByPk(userId);
+    const post = await postModel.findByPk(postId);
     if (!post) {
       return { message: "post not found" };
     }
