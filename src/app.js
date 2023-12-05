@@ -7,12 +7,13 @@ import Session from "express-session";
 import sequelize from "./db/config.js";
 import SequelizeStore from "connect-session-sequelize";
 import AuthenticateMiddleware from "./middleware/authenticate.js";
-await connectDb();
 
 const app = express();
-
 app.use(express.json());
 const port = process.env.PORT;
+
+connectDb();
+
 dbInit()
   .then(() => console.log("db synced"))
   .catch(() => console.log("db not synced"));
@@ -32,6 +33,8 @@ app.use(
   })
 );
 mySequelizeStore1.sync({});
+
+app.use(express.static("public"));
 
 app.use("/", AllRouter);
 app.post("/", AuthenticateMiddleware, (req, res) => {

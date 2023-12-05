@@ -3,6 +3,7 @@ import likeModel from "../model/LikeModel/LikeModel.js";
 import postModel from "../model/PostModel/PostModel.js";
 import usersModel from "../model/UserModel/UserModel.js";
 import commentModel from "../model/CommentModel/CommentModel.js";
+import ImageModel from "../model/ImageModel/ImageModel.js";
 
 const dbInit = async () => {
   await usersModel.sync({
@@ -22,6 +23,10 @@ const dbInit = async () => {
     force: false,
   });
   await commentModel.sync({
+    alter: true,
+    force: false,
+  });
+  await ImageModel.sync({
     alter: true,
     force: false,
   });
