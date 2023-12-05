@@ -18,7 +18,7 @@ const AuthService = {
     });
   },
 
-  loginUser: async (userdata) => {
+  loginUser: async (req, userdata) => {
     const { email, password } = userdata;
     const user = await usersModal.findOne({ where: { email } });
     if (!user) {
@@ -41,9 +41,10 @@ const AuthService = {
       subject: "Login Notification",
       text: "We detected a new login if that wasn't ypu please contact support or reset password",
     });
-    // req.session.token = token;
-    // req.session.user = data;
-    // req.session.save();
+    req.session.token = token;
+    req.session.user = data;
+    await req.session.save();
+    console.log(req.session);
     return {
       message: "User login",
       token,

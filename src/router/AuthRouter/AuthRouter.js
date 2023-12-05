@@ -9,9 +9,11 @@ AuthRouter.post(
   AuthController.registerUser
 );
 AuthRouter.post("/login/", AuthController.loginUser);
-AuthRouter.get("/allUsers/", AuthController.getAllUser);
-AuthRouter.get("/searchUsers/:userId", AuthController.getSpecificUser);
-AuthRouter.put("/updateUser/:userId", AuthController.updateUser);
-AuthRouter.delete("/deleteUser/:userId", AuthController.deleteUser);
+
+// move this to user routes and apply middleware to this
+AuthRouter.get("/", AuthController.getAllUser);
+AuthRouter.get("/:userId", AuthController.getSpecificUser);
+AuthRouter.put("/:userId", AuthController.updateUser);
+AuthRouter.delete("/:userId", AuthController.deleteUser);
 
 export default AuthRouter;

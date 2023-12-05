@@ -5,6 +5,7 @@ import postModel from "../PostModel/PostModel.js";
 
 const commentModel = sequelize.define("comment", {
   userComment: {
+    //content
     type: DataTypes.STRING,
     allowNull: false,
   },

@@ -8,6 +8,7 @@ const PostServices = {
     return await postModel.findAll({
       include: ["user"],
     });
+    // apply pagination here : limit , offset , etc etc
   },
   searchPostById: async (postId) => {
     return await postModel.findByPk(postId, {

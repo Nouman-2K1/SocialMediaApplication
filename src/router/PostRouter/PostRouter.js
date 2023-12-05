@@ -3,15 +3,15 @@ import PostValidator from "../../validator/PostValidator/PostValidator.js";
 import { Router } from "express";
 
 const postRouter = Router();
-
+// apply middleware auth
 postRouter.post(
-  "/createpost",
+  "/",
   PostValidator.validateCreatePost,
   PostControler.createPost
 );
-postRouter.get("/getAllPost", PostControler.getAllPosts);
-postRouter.get("/searchPostById/:postId", PostControler.searchPostById);
-postRouter.put("/updatePost/:postId", PostControler.updatePost);
-postRouter.delete("/removePost/:postId", PostControler.deletePost);
+postRouter.get("/", PostControler.getAllPosts);
+postRouter.get("/:postId", PostControler.searchPostById);
+postRouter.put("/:postId", PostControler.updatePost);
+postRouter.delete("/:postId", PostControler.deletePost);
 
 export default postRouter;
