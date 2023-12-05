@@ -12,7 +12,7 @@ await connectDb();
 const app = express();
 
 app.use(express.json());
-const port = 3301; //moe to env
+const port = process.env.PORT;
 dbInit()
   .then(() => console.log("db synced"))
   .catch(() => console.log("db not synced"));
@@ -24,7 +24,7 @@ const mySequelizeStore1 = new mySequelizeStore({
 
 app.use(
   Session({
-    secret: "lanskjagsfjhgsdjhgf", //move to env
+    secret: process.env.SESSION_SECRET,
     store: mySequelizeStore1,
     saveUninitialized: true,
     resave: false,
