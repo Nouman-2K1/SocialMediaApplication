@@ -10,10 +10,4 @@ AuthRouter.post(
 );
 AuthRouter.post("/login/", AuthController.loginUser);
 
-// move this to user routes and apply middleware to this
-AuthRouter.get("/", AuthController.getAllUser);
-AuthRouter.get("/:userId", AuthController.getSpecificUser);
-AuthRouter.put("/:userId", AuthController.updateUser);
-AuthRouter.delete("/:userId", AuthController.deleteUser);
-
 export default AuthRouter;
