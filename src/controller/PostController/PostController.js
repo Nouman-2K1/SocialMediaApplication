@@ -4,7 +4,7 @@ const PostControler = {
   createPost: async (req, res) => {
     try {
       const post = await PostServices.createPost(
-        req.body.userId,
+        req.session.userId,
         req.body.content
       );
       return res.json(post);
@@ -14,9 +14,13 @@ const PostControler = {
   },
   getAllPosts: async (req, res) => {
     try {
-      const posts = await PostServices.getAllPosts();
+      const posts = await PostServices.getAllPosts(
+        req.params.page,
+        req.params.pageSize
+      );
       return res.json(posts);
     } catch (error) {
+      console.log(error);
       return res.status(500).json({
         message: "Something bad happened",
       });

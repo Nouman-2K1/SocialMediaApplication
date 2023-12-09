@@ -4,11 +4,13 @@ const PostServices = {
     return await postModel.create({ userId, content });
   },
 
-  getAllPosts: async () => {
+  getAllPosts: async (page, pageSize) => {
+    const offset = (page - 1) * pageSize;
     return await postModel.findAll({
       include: ["user"],
+      limit: pageSize,
+      offset: offset,
     });
-    // apply pagination here : limit , offset , etc etc
   },
   searchPostById: async (postId) => {
     return await postModel.findByPk(postId, {

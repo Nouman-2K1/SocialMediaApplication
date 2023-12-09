@@ -10,7 +10,11 @@ postRouter.post(
   AuthenticateMiddleware,
   PostControler.createPost
 );
-postRouter.get("/", AuthenticateMiddleware, PostControler.getAllPosts);
+postRouter.get(
+  "/:page/:pageSize",
+  AuthenticateMiddleware,
+  PostControler.getAllPosts
+);
 postRouter.get(
   "/:postId",
   AuthenticateMiddleware,

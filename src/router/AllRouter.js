@@ -8,7 +8,7 @@ import ImageRouter from "./ImageRouter/ImageRouter.js";
 import UserRouter from "./UserRouter/UserRouter.js";
 const AllRouter = Router();
 
-AllRouter.use("/user", AuthRouter);
+AllRouter.use("/auth", AuthRouter);
 AllRouter.use("/post", postRouter);
 AllRouter.use("/like", likeRouter);
 AllRouter.use("/comment", CommentRouter);

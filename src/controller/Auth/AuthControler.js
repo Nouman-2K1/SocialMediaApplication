@@ -15,11 +15,11 @@ const AuthControler = {
   loginUser: async (req, res) => {
     try {
       const user = await AuthService.loginUser(req, req.body);
-      const { token, message, data } = user;
+      const { token, data } = user;
 
       return res
         .status(200)
-        .json({ message: "User Loged in Sussceefully", token });
+        .json({ message: "User Loged in Sussceefully", token, data });
     } catch (error) {
       console.log(error);
       return res.status(403).json({ message: "Bad Requset" });
