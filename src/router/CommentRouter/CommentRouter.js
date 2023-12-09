@@ -5,7 +5,7 @@ import AuthenticateMiddleware from "../../middleware/authenticate.js";
 const CommentRouter = Router();
 
 CommentRouter.post(
-  "/commentOnPost",
+  "/post/:postId/comment",
   AuthenticateMiddleware,
   commentController.commentOnPost
 );

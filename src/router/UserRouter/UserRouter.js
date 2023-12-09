@@ -9,7 +9,7 @@ UserRouter.get(
   AuthenticateMiddleware,
   UserController.getSpecificUser
 );
-UserRouter.put("/:userId", AuthenticateMiddleware, UserController.updateUser);
+UserRouter.put("/", AuthenticateMiddleware, UserController.updateUser);
 UserRouter.delete(
   "/:userId",
   AuthenticateMiddleware,

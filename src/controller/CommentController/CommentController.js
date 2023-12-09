@@ -2,10 +2,10 @@ import commentService from "../../service/CommentService/CommentService.js";
 const commentController = {
   commentOnPost: async (req, res) => {
     try {
-      const { userId, postId, comment } = req.body;
+      const { comment } = req.body;
       const comments = await commentService.commentOnPost(
-        userId,
-        postId,
+        req.session.user.id,
+        req.params.postId,
         comment
       );
       return res.json(comments);

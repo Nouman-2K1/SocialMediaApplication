@@ -8,6 +8,7 @@ const followService = {
 
   getFollowersForUser: async (userId) => {
     return await usersModel.findAll({
+      where: { id: userId },
       include: [
         {
           model: usersModel,

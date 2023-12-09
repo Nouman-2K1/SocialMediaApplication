@@ -3,7 +3,10 @@ import likeService from "../../service/LikeService/LikeService.js";
 const likeController = {
   likePost: async (req, res) => {
     try {
-      const like = await likeService.likePost(req.body.userId, req.body.postId);
+      const like = await likeService.likePost(
+        req.session.user.id,
+        req.params.postId
+      );
       return res.json(like);
     } catch (error) {
       return res.status(500).json({
@@ -14,7 +17,7 @@ const likeController = {
 
   unlikePost: async (req, res) => {
     try {
-      await likeService.unlikePost(req.body.userId, req.body.postId);
+      await likeService.unlikePost(req.session.user.id, req.params.postId);
       return res.json({
         message: "post unliked successfully",
       });

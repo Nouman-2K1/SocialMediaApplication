@@ -24,7 +24,7 @@ const UserController = {
   },
   updateUser: async (req, res) => {
     try {
-      const user = await UserService.updateUser(req.session.userId, req.body);
+      const user = await UserService.updateUser(req.session.user.id, req.body);
       if (!user) {
         return res.status(400).json({ message: "No User Found" });
       }

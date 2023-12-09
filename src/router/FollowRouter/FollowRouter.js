@@ -4,23 +4,19 @@ import { Router } from "express";
 const followRouter = Router();
 
 followRouter.post(
-  "/followUser",
+  "/user/:followingUserId/followUser",
   AuthenticateMiddleware,
   followController.followUser
 );
+followRouter.get("/getFollowersOfUser", followController.getFollowersOfUser);
 followRouter.get(
-  "/getFollowersOfUser/:userId",
-  followController.getFollowersOfUser
-);
-followRouter.get(
-  "/getFollowingOfUser/:userId",
+  "/getFollowingOfUser",
   AuthenticateMiddleware,
   followController.getFollowingOfUser
 );
 followRouter.post(
-  "/unfollowUser",
+  "/user/:followingUserId/unfollowUser",
   AuthenticateMiddleware,
   followController.unfollowUser
 );
-
 export default followRouter;

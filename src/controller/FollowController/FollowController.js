@@ -3,13 +3,14 @@ const followController = {
   followUser: async (req, res) => {
     try {
       await followService.followUser(
-        req.body.followerUserId,
-        req.body.followingUserId
+        req.session.user.id,
+        req.params.followingUserId
       );
       return res.json({
         message: "followed successfully",
       });
     } catch (error) {
+      console.log(error);
       return res.status(500).json({
         message: "something bad happened",
       });
@@ -18,8 +19,8 @@ const followController = {
 
   getFollowersOfUser: async (req, res) => {
     try {
-      const followers = await followService.getFollowersofUser(
-        req.params.userId
+      const followers = await followService.getFollowersForUser(
+        req.session.user.id
       );
       return res.json(followers);
     } catch (error) {
@@ -32,8 +33,8 @@ const followController = {
 
   getFollowingOfUser: async (req, res) => {
     try {
-      const following = await followService.getFollowingOfUser(
-        req.params.userId
+      const following = await followService.getFollowingForUser(
+        req.session.user.id
       );
       return res.json(following);
     } catch (error) {
@@ -47,8 +48,8 @@ const followController = {
   unfollowUser: async (req, res) => {
     try {
       await followService.unfollowUser(
-        req.body.followerUserId,
-        req.body.followingUserId
+        req.session.user.id,
+        req.params.followingUserId
       );
       return res.json({
         message: "unfollowed successfully",

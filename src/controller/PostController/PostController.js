@@ -4,7 +4,7 @@ const PostControler = {
   createPost: async (req, res) => {
     try {
       const post = await PostServices.createPost(
-        req.session.userId,
+        req.session.user.id,
         req.body.content
       );
       return res.json(post);
