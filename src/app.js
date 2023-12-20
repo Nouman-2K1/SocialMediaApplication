@@ -43,6 +43,19 @@ app.post("/", AuthenticateMiddleware, (req, res) => {
   });
 });
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
+  next();
+});
+app.get("/test", (req, res) => {
+  return res.json({
+    name: "nomans",
+  });
+});
 app.listen(port, (err) => {
   if (!err) {
     console.log(`Server is listening at http://localhost:${port}`);
